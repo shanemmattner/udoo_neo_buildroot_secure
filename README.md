@@ -33,7 +33,7 @@ $ git clone git://git.buildroot.net/buildroot
 ## Buildroot Configuration
 Here are the steps I did to set-up this project:
 ```
-$ git clone git://git.buildroot.net/buildroot
+$ git submodule add git://git.buildroot.net/buildroot
 $ cd buildroot
 $ make mx6sx_udoo_neo_defconfig
 $ make menuconfig
