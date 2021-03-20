@@ -24,9 +24,10 @@ Buildroot set-up to generate a secure FIT image for the Udoo Neo.
 * Tech 3 - version 3.0
 
 ## Project Setup
-To run this project, install it locally using apt:
+To run this project clone the repo, update the Buildroot submodule
 ```
-$ git clone git://git.buildroot.net/buildroot
+$ git clone https://github.com/shanemmattner/udoo_neo_buildroot_secure.git
+$ git submodule update --init --recursive 
 
 ```
 
@@ -40,12 +41,22 @@ $ git submodule add git://git.buildroot.net/buildroot
 Now we must make the recommended directory structure for the br2-external tree.  This will allow us to version control our Buildroot configuration.  In order for Git to register the folders we must create a file within them, this is the reason for 'touch ".../file"'.
 ```
 $ mkdir br-external
-$ mkdir -p "board/company/boardname/rootfs_overlay/etc" && touch "board/company/boardname/rootfs_overlay/etc/file"
-$ mkdir -p "board/company/boardname/patches" && touch "board/company/boardname/patches/file"
-$ mkdir -p "configs" && touch "configs/file"
-$ mkdir -p "package/company" && touch "package/company/file"
+$ mkdir -p "br-external/board/company/boardname/rootfs_overlay/etc" && touch "br-external/board/company/boardname/rootfs_overlay/etc/file"
+$ mkdir -p "br-external/board/company/boardname/patches" && touch "br-external/board/company/boardname/patches/file"
+$ mkdir -p "br-external/configs" && touch "br-external/configs/file"
+$ mkdir -p "br-external/package/company" && touch "br-external/package/company/file"
 ```
+Next we creat the external.desc file in /br-external/
+```
+$ vim br-external/external.desc
+```
+Enter the following and exit:
+`name: Udoo_Neo`
 
+Make the defconfig for Udoo Neo and target the BR2
+```
+$ cd buildroot/; make BR2_EXTERNAL=../br-external/ mx6sx_udoo_neo_defconfig
+```
 ```
 $ make mx6sx_udoo_neo_defconfig
 $ make menuconfig
