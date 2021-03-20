@@ -10,6 +10,7 @@
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
+* [Links](#links)
 
 ## General info
 
@@ -70,7 +71,7 @@ Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 * [Buildroot cheat sheet](https://blog.inf.re/buildroot-cheatsheet.html)
 * [Op-tee on RPi using Buildroot](https://blog.crysys.hu/2018/06/op-tee-default-build-and-installation-on-the-raspberry-pi/)
 * [RPi on Buildroot](https://blog.crysys.hu/2018/06/using-buildroot-to-create-custom-linux-system-images/)
-* [Example FIT image] (https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
-* [Bootlin Buildroot Training slides] (https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf)
+* [Example FIT image](https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
+* [Bootlin Buildroot Training slides](https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf)
 * [Bootling Buildroot Training labs](https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf)
 * [Bootling Buildroot STM32MP1](https://bootlin.com/blog/building-a-linux-system-for-the-stm32mp1-basic-system/)
