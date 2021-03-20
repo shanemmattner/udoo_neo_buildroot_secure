@@ -48,8 +48,8 @@ Show examples of usage:
 
 ## Features
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
+* Verified boot
+* OP-TEE Secure
 * Awesome feature 3
 
 To-do list:
@@ -57,7 +57,7 @@ To-do list:
 * Wow improvement to be done 2
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+_in progress_
 
 ## Inspiration
 Motivated by an employment screening question.
@@ -66,12 +66,25 @@ Motivated by an employment screening question.
 Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 
 ## Links
+##### Source Control
 * [Buildroot source control](https://stackoverflow.com/questions/21006549/how-to-get-a-buildroot-project-under-source-control)
-* [Image format info](https://www.marcusfolkesson.se/blog/fit-vs-legacy-image-format/)
-* [Buildroot cheat sheet](https://blog.inf.re/buildroot-cheatsheet.html)
+* [Buildroot manual - Keep customizations outside of Buildroot](https://buildroot.org/downloads/manual/manual.html#outside-br-custom)
+* [Buildroot manual - Recommended directory structure](https://buildroot.org/downloads/manual/manual.html#customize-dir-structure)
+##### Verified Boot
+* [VerifiedBoot using Buildroot for nitrogen6sx](https://github.com/pratapms/VerifiedBoot)
+* [Verified Boot – Introduction to U-Boot’s Secure Boot](https://web.archive.org/web/20190104025413/https://www.pacificsimplicity.ca/blog/verified-boot-%E2%80%93-introduction-u-boot%E2%80%99s-secure-boot)
+* [U-Boot_verified_RSA_boot_flow_on_arm_target](https://www.denx.de/wiki/pub/U-Boot/MiniSummitELCE2013/U-Boot_verified_RSA_boot_flow_on_arm_target.pdf)
+* [Verified U-Boot](https://lwn.net/Articles/571031/)
+##### OP-TEE Trusted Execution Environment
 * [Op-tee on RPi using Buildroot](https://blog.crysys.hu/2018/06/op-tee-default-build-and-installation-on-the-raspberry-pi/)
+* [About OP-TEE](https://optee.readthedocs.io/en/latest/general/about.html)
+##### Buildroot
 * [RPi on Buildroot](https://blog.crysys.hu/2018/06/using-buildroot-to-create-custom-linux-system-images/)
-* [Example FIT image](https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
 * [Bootlin Buildroot Training slides](https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf)
 * [Bootling Buildroot Training labs](https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf)
 * [Bootling Buildroot STM32MP1](https://bootlin.com/blog/building-a-linux-system-for-the-stm32mp1-basic-system/)
+* [My 6 tips for working with Buildroot](https://www.viatech.com/en/2015/06/buildroot/)
+* [Buildroot cheat sheet](https://blog.inf.re/buildroot-cheatsheet.html)
+##### FIT format
+* [Example FIT image](https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
+* [Image format info](https://www.marcusfolkesson.se/blog/fit-vs-legacy-image-format/)
