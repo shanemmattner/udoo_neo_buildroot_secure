@@ -31,10 +31,22 @@ $ git clone git://git.buildroot.net/buildroot
 ```
 
 ## Buildroot Configuration
-Here are the steps I did to set-up this project:
+Here are the steps I did to set-up this project.
+
+First, we add buildroot as a submodule.
 ```
 $ git submodule add git://git.buildroot.net/buildroot
-$ cd buildroot
+```
+Now we must make the recommended directory structure for the br2-external tree.  This will allow us to version control our Buildroot configuration.  In order for Git to register the folders we must create a file within them, this is the reason for 'touch ".../file"'.
+```
+$ mkdir br-external
+$ mkdir -p "board/company/boardname/rootfs_overlay/etc" && touch "board/company/boardname/rootfs_overlay/etc/file"
+$ mkdir -p "board/company/boardname/patches" && touch "board/company/boardname/patches/file"
+$ mkdir -p "configs" && touch "configs/file"
+$ mkdir -p "package/company" && touch "package/company/file"
+```
+
+```
 $ make mx6sx_udoo_neo_defconfig
 $ make menuconfig
 ```
