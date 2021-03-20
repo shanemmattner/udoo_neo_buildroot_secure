@@ -13,7 +13,7 @@
 * [Links](#links)
 
 ## General info
-
+Buildroot set-up to generate a secure FIT image for the Udoo Neo.  
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
@@ -23,9 +23,15 @@
 * Tech 2 - version 2.0
 * Tech 3 - version 3.0
 
-## Setup
-To run this project, install it locally using npm:
+## Project Setup
+To run this project, install it locally using apt:
+```
+$ git clone git://git.buildroot.net/buildroot
 
+```
+
+## Buildroot Configuration
+Here are the steps I did to set-up this project:
 ```
 $ git clone git://git.buildroot.net/buildroot
 $ cd buildroot
@@ -79,6 +85,7 @@ Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 * [Op-tee on RPi using Buildroot](https://blog.crysys.hu/2018/06/op-tee-default-build-and-installation-on-the-raspberry-pi/)
 * [About OP-TEE](https://optee.readthedocs.io/en/latest/general/about.html)
 ##### Buildroot
+* [Buildroot on i.MX6 UDOO NEO Hardware](https://www.youtube.com/watch?v=wGXgeQ5KK7A&t=761s)
 * [RPi on Buildroot](https://blog.crysys.hu/2018/06/using-buildroot-to-create-custom-linux-system-images/)
 * [Bootlin Buildroot Training slides](https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf)
 * [Bootling Buildroot Training labs](https://bootlin.com/doc/training/buildroot/buildroot-labs.pdf)
