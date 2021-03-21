@@ -41,6 +41,8 @@ $ git submodule add git://git.buildroot.net/buildroot
 Now we must make the recommended directory structure for the br2-external tree.  This will allow us to version control our Buildroot configuration.  In order for Git to register the folders we must create a file within them, this is the reason for 'touch ".../file"'.
 ```
 $ mkdir br-external
+$ mkdir -p "br-external/target_overlay" && touch "br-external/target_overlay/file"
+$ mkdir -p "br-external/board/company/boardname/rootfs_overlay/etc" && touch "br-external/board/company/boardname/rootfs_overlay/etc/file"
 $ mkdir -p "br-external/board/company/boardname/rootfs_overlay/etc" && touch "br-external/board/company/boardname/rootfs_overlay/etc/file"
 $ mkdir -p "br-external/board/company/boardname/patches" && touch "br-external/board/company/boardname/patches/file"
 $ mkdir -p "br-external/configs" && touch "br-external/configs/file"
@@ -53,14 +55,18 @@ $ vim br-external/external.desc
 Enter the following and exit:
 `name: Udoo_Neo`
 
-Make the defconfig for Udoo Neo and target the BR2
+Make a copy of the Udoo Neo defconfig in the external tree
 ```
-$ cd buildroot/; make BR2_EXTERNAL=../br-external/ mx6sx_udoo_neo_defconfig
+$ cp buildroot/configs/mx6sx_udoo_neo_defconfig br-external/configs/
+
 ```
+Make the defconfig and point the output toward the external tree.   Then save that defconfig
 ```
-$ make -C ../buildroot O=br-external mx6sx_udoo_neo_defconfig
-$ make -C ../buildroot O=br-external menuconfig
+$ make -C buildroot defconfig BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig O=../br-external/
 ```
+Select these options in the menuconfig
+* Build options >> Enable compiler cache >> 'y'
+* System configuration >> Root filesystem overlay directories >> 'target_overlay'
 * Toolchain >> Toolchain Type >> External toolchain
 * Toolchain >> Toolchain Type >> Copy gdb server to the Target >> 'y'
 * Target packages >> Security >> optee-client >> 'y'
@@ -69,9 +75,19 @@ $ make -C ../buildroot O=br-external menuconfig
 * Host utilities >> Flattened Image Tree (FIT) support >> 'y'
 * Host utilities >> FIT signature verification support >> 'y'
 
+Save the defconfig
+```
+$ make -C buildroot savedefconfig BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig
+```
+
+Make the image
+```
+$ make -C buildroot BR2_EXTERNAL=../br-external BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig O=../br-external/
 
 ```
-$ make
+
+
+```
 $ sudo dd if=output/images/sdcard.img of=/dev/mmcblk0 bs=1M conv=fdatasync status=progress
 ```
 
