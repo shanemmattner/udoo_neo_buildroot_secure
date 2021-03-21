@@ -58,13 +58,17 @@ Make the defconfig for Udoo Neo and target the BR2
 $ cd buildroot/; make BR2_EXTERNAL=../br-external/ mx6sx_udoo_neo_defconfig
 ```
 ```
-$ make mx6sx_udoo_neo_defconfig
-$ make menuconfig
+$ make -C ../buildroot O=br-external mx6sx_udoo_neo_defconfig
+$ make -C ../buildroot O=br-external menuconfig
 ```
 * Toolchain >> Toolchain Type >> External toolchain
 * Toolchain >> Toolchain Type >> Copy gdb server to the Target >> 'y'
 * Target packages >> Security >> optee-client >> 'y'
+* Target packages >> Networking applications >> dropbear >> 'y'
+* Bootloaders >> U-Boot needs OpenSSL >> 'y'
 * Host utilities >> Flattened Image Tree (FIT) support >> 'y'
+* Host utilities >> FIT signature verification support >> 'y'
+
 
 ```
 $ make
