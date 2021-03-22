@@ -13,25 +13,25 @@
 * [Links](#links)
 
 ## General info
-Buildroot set-up to generate a secure FIT image for the Udoo Neo.  
+Buildroot set-up to generate a secure FIT image for the Udoo Neo. The project is set up to allow for easy version control of the Buildoot environment by using external tree mechanism.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Verified Boot](readme_images/Verified-Boot.png)
 
 ## Technologies
 * Buildroot - version 2021.02
 * OP-TEE - version ?.?
-* Tech 3 - version 3.0
+* RSA Encryption - version ?.?
 
 ## Project Setup
-To run this project clone the repo, update the Buildroot submodule
+To run this project clone the repo, update the Buildroot submodule, generate the RSA key, then build the project.
 ```
 $ git clone https://github.com/shanemmattner/udoo_neo_buildroot_secure.git
 $ cd udoo_neo_buildroot_secure
 $ git submodule update --init --recursive
-$ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
 $ openssl genrsa -out br-external/keys/dev.key 2048
 $ openssl req -new -key br-external/keys/dev.key -out br-external/keys/dev.csr
+$ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
  
 
 ```
@@ -88,7 +88,7 @@ $ make -C buildroot O=br-external menuconfig BR2_CONFIG=../br-external/.config
 
 Save the defconfig
 ```
-$ make -C buildroot savedefconfig BR2_EXTERNAL=../br-external BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig
+$ make -C buildroot savedefconfig BR2_EXTERNAL=../br-external
 ```
 
 Make the image
@@ -96,7 +96,8 @@ Make the image
 $ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
 
 ```
-
+#TODO: Change this to make a FIT format SD card
+Move files to SD card
 
 ```
 $ sudo dd if=output/images/sdcard.img of=/dev/mmcblk0 bs=1M conv=fdatasync status=progress
@@ -114,7 +115,8 @@ List of features ready and TODOs for future development
 
 To-do list:
 * Build image using defconfig instead of .config
-* Wow improvement to be done 2
+* Create FIT image for SD card
+* Use OP-TEE
 
 ## Status
 _in progress_
@@ -123,6 +125,7 @@ _in progress_
 Motivated by an employment screening question.
 
 ## Contact
+Project created by Shane Mattner
 Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 
 ## Links
