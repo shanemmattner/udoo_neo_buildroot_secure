@@ -21,7 +21,7 @@
 
 		ramdisk@1 {
 			description = "rootfs";
-			data = /incbin/("./rootfs.cpio.gz");
+			data = /incbin/("./rootfs.tar");
 			type = "ramdisk";
 			arch = "arm";
 			os = "linux";
@@ -35,7 +35,7 @@
 
 		fdt@1 {
 			description = "device tree";
-			data = /incbin/("./sun8i-h2-plus-orangepi-zero.dtb");
+			data = /incbin/("./imx6sx-udoo-neo-basic.dtb");
 			type = "flat_dt";
 			arch = "arm";
 			compression = "none";

@@ -17,13 +17,16 @@ cp "${BOARD_DIR}/${IMAGE_ITS}" "${BINARIES_DIR}"
 cd "${BINARIES_DIR}"
 
 echo " -> Building..."
-"${MKIMAGE}" -D "-I dts -O dtb -p 2000" -f ${IMAGE_ITS} ${OUTPUT_NAME}
+#"${MKIMAGE}" -D "-I dts -O dtb -p 2000" -f ${IMAGE_ITS} ${OUTPUT_NAME}
 
 echo " -> Signing..."
-"${MKIMAGE}" -D "-I dts -O dtb -p 2000" -F -k "${KEYS_DIR}" -K "${BUILD_DIR}/uboot-2017.03/dts/dt.dtb" -r ${OUTPUT_NAME}
+#"${MKIMAGE}" -D "-I dts -O dtb -p 2000" -F -k "${KEYS_DIR}" -K "${BUILD_DIR}/uboot-2021.02/dts/dt.dtb" -r ${OUTPUT_NAME}
+
+#trying to make plain its
+"${MKIMAGE}" -f ${IMAGE_ITS} ${OUTPUT_NAME}
 
 rm ${IMAGE_ITS}
 
 # Rebuild uboot with patched dtb
-cd "${BUILD_DIR}/.."
-make uboot-rebuild
+#cd "${BUILD_DIR}/.."
+#make uboot-rebuild
