@@ -5,7 +5,8 @@
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Setup](#setup)
+* [Project Setup](#Project-Setup)
+* [Buildroot Configuration](#Buildroot-Configuration)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
@@ -125,7 +126,7 @@ _in progress_
 Motivated by an employment screening question.
 
 ## Contact
-Project created by Shane Mattner
+Project created by Shane Mattner  
 Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 
 ## Links
