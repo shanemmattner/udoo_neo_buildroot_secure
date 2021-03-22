@@ -13,15 +13,16 @@
 * [Links](#links)
 
 ## General info
-Buildroot set-up to generate a secure FIT image for the Udoo Neo. The project is set up to allow for easy version control of the Buildoot environment by using external tree mechanism.
+Buildroot set-up to generate a secure FIT image for the Udoo Neo. The project uses Buildroot's external tree mechanism to allow for easy version control.
 
 ## Screenshots
 ![Verified Boot](readme_images/Verified-Boot.png)
 
 ## Technologies
 * Buildroot - version 2021.02
-* OP-TEE - version ?.?
-* RSA Encryption - version ?.?
+* RSA Encryption
+* OP-TEE
+* Udoo Neo
 
 ## Project Setup
 To run this project clone the repo, update the Buildroot submodule, generate the RSA key, then build the project.
@@ -32,9 +33,8 @@ $ git submodule update --init --recursive
 $ openssl genrsa -out br-external/keys/dev.key 2048
 $ openssl req -new -key br-external/keys/dev.key -out br-external/keys/dev.csr
 $ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
- 
-
 ```
+The output 'image.itb' will be in br-external/images.
 
 ## Buildroot Configuration
 Here are the steps I did to set-up this project.
@@ -105,10 +105,6 @@ Move files to SD card
 $ sudo dd if=output/images/sdcard.img of=/dev/mmcblk0 bs=1M conv=fdatasync status=progress
 ```
 
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
-
 ## Features
 List of features ready and TODOs for future development
 * Verified boot
@@ -152,7 +148,6 @@ Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 * [My 6 tips for working with Buildroot](https://www.viatech.com/en/2015/06/buildroot/)
 * [Buildroot cheat sheet](https://blog.inf.re/buildroot-cheatsheet.html)
 * [Buildroot-part 1](https://boozlachu.medium.com/buildroot-part-1-general-information-minimum-system-build-setup-via-menu-32fdb389eebc)
-
 ##### FIT format
 * [Example FIT image](https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
 * [U-BOOT Images](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842374/U-Boot+Images)
