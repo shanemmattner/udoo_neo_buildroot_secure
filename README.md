@@ -52,6 +52,8 @@ $ mkdir -p "br-external/board/company/boardname/rootfs_overlay/etc" && touch "br
 $ mkdir -p "br-external/board/company/boardname/patches" && touch "br-external/board/company/boardname/patches/file"
 $ mkdir -p "br-external/configs" && touch "br-external/configs/file"
 $ mkdir -p "br-external/package/company" && touch "br-external/package/company/file"
+$ mkdir -p "br-external/keys" && touch "br-external/keys/file"
+
 ```
 Next we creat the external.desc file in /br-external/
 ```
