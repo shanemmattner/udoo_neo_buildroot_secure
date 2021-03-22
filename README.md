@@ -83,16 +83,18 @@ Select these options in the menuconfig
 * Host utilities >> Flattened Image Tree (FIT) support >> 'y'
 * Host utilities >> FIT signature verification support >> 'y'
 ```
-$ make -C buildroot O=br-external menuconfig BR2_CONFIG=../br-external/.config
+$ cd br-external
+$ make menuconfig
 ```
 
 Save the defconfig
 ```
-$ make -C buildroot savedefconfig BR2_EXTERNAL=../br-external
+$ make savedefconfig
 ```
 
 Make the image
 ```
+$cd .. # Move to git root dir
 $ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
 
 ```
