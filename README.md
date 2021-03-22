@@ -19,15 +19,20 @@ Buildroot set-up to generate a secure FIT image for the Udoo Neo.
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Buildroot - version ?.?
-* Tech 2 - version 2.0
+* Buildroot - version 2021.02
+* OP-TEE - version ?.?
 * Tech 3 - version 3.0
 
 ## Project Setup
 To run this project clone the repo, update the Buildroot submodule
 ```
 $ git clone https://github.com/shanemmattner/udoo_neo_buildroot_secure.git
-$ git submodule update --init --recursive 
+$ cd udoo_neo_buildroot_secure
+$ git submodule update --init --recursive
+$ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
+$ openssl genrsa -out br-external/keys/dev.key 2048
+$ openssl req -new -key br-external/keys/dev.key -out br-external/keys/dev.csr
+ 
 
 ```
 
@@ -62,11 +67,14 @@ $ cp buildroot/configs/mx6sx_udoo_neo_defconfig br-external/configs/
 ```
 Make the defconfig and point the output toward the external tree.   Then save that defconfig
 ```
-$ make -C buildroot defconfig BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig O=../br-external/
+$ make -C buildroot defconfig BR2_EXTERNAL=../br-external BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig O=../br-external/
 ```
+Make menuconfig and select the options below:
+
 Select these options in the menuconfig
 * Build options >> Enable compiler cache >> 'y'
 * System configuration >> Root filesystem overlay directories >> 'target_overlay'
+* System configuration >> Custom scripts to run after creating filesystem images >> '../post-image-signatures.sh'
 * Toolchain >> Toolchain Type >> External toolchain
 * Toolchain >> Toolchain Type >> Copy gdb server to the Target >> 'y'
 * Target packages >> Security >> optee-client >> 'y'
@@ -74,15 +82,18 @@ Select these options in the menuconfig
 * Bootloaders >> U-Boot needs OpenSSL >> 'y'
 * Host utilities >> Flattened Image Tree (FIT) support >> 'y'
 * Host utilities >> FIT signature verification support >> 'y'
+```
+$ make -C buildroot O=br-external menuconfig BR2_CONFIG=../br-external/.config
+```
 
 Save the defconfig
 ```
-$ make -C buildroot savedefconfig BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig
+$ make -C buildroot savedefconfig BR2_EXTERNAL=../br-external BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig
 ```
 
 Make the image
 ```
-$ make -C buildroot BR2_EXTERNAL=../br-external BR2_DEFCONFIG=../br-external/configs/mx6sx_udoo_neo_defconfig O=../br-external/
+$ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
 
 ```
 
@@ -102,7 +113,7 @@ List of features ready and TODOs for future development
 * Awesome feature 3
 
 To-do list:
-* Wow improvement to be done 1
+* Build image using defconfig instead of .config
 * Wow improvement to be done 2
 
 ## Status
@@ -135,6 +146,9 @@ Readme template created by [@flynerdpl](https://www.flynerd.pl/)
 * [Bootling Buildroot STM32MP1](https://bootlin.com/blog/building-a-linux-system-for-the-stm32mp1-basic-system/)
 * [My 6 tips for working with Buildroot](https://www.viatech.com/en/2015/06/buildroot/)
 * [Buildroot cheat sheet](https://blog.inf.re/buildroot-cheatsheet.html)
+* [Buildroot-part 1](https://boozlachu.medium.com/buildroot-part-1-general-information-minimum-system-build-setup-via-menu-32fdb389eebc)
+
 ##### FIT format
 * [Example FIT image](https://gist.github.com/Informatic/10f0832d8971c4d874210dc984462e5b)
+* [U-BOOT Images](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842374/U-Boot+Images)
 * [Image format info](https://www.marcusfolkesson.se/blog/fit-vs-legacy-image-format/)
