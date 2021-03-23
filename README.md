@@ -117,7 +117,6 @@ List of features ready and TODOs for future development
 
 To-do list:
 * Build image using defconfig instead of .config
-* Create FIT image for SD card
 * Use OP-TEE
 
 ## Status
