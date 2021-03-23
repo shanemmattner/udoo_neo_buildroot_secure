@@ -35,7 +35,8 @@ $ openssl genrsa -out br-external/keys/dev.key 2048
 $ openssl req -new -key br-external/keys/dev.key -out br-external/keys/dev.csr
 $ make -C buildroot BR2_EXTERNAL=../br-external O=../br-external/
 ```
-The output 'image.itb' will be in br-external/images.
+The output 'image.itb' will be in <ins>**br-external/images**</ins>:
+![images_folder](readme_images/images_folder.png)
 
 ## Buildroot Configuration
 Here are the steps I did to set-up this project.
@@ -116,7 +117,6 @@ List of features ready and TODOs for future development
 
 To-do list:
 * Build image using defconfig instead of .config
-* Create FIT image for SD card
 * Use OP-TEE
 
 ## Status
